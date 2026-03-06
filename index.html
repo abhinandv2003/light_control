@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ESP32 Light Control</title>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  </head>
+
+  <body style="text-align: center; font-family: Arial">
+    <h1>Patient Light Control</h1>
+
+    <button
+      onclick="lightOn()"
+      style="font-size: 20px; padding: 15px; background: green; color: white">
+      TURN LIGHT ON
+    </button>
+
+    <br /><br />
+
+    <button
+      onclick="lightOff()"
+      style="font-size: 20px; padding: 15px; background: red; color: white">
+      TURN LIGHT OFF
+    </button>
+
+    <script>
+      // Firebase config
+      var firebaseConfig = {
+        apiKey: "AIzaSyAgMQPxReunCuIuwpKi5gddPMdKb_tfpuM",
+        authDomain: "facekey-85532.firebaseapp.com",
+        databaseURL:
+          "https://facekey-85532-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "facekey-85532",
+        storageBucket: "facekey-85532.firebasestorage.app",
+        messagingSenderId: "965079557406",
+        appId: "1:965079557406:web:5a48788b7b5617216f950f",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      var database = firebase.database();
+
+      function lightOn() {
+        database.ref("light").set(1);
+      }
+
+      function lightOff() {
+        database.ref("light").set(0);
+      }
+    </script>
+  </body>
+</html>
